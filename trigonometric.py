@@ -13,8 +13,10 @@ def taylor(x, n):
         s += sign * x ** (2 * i + 1) / math.factorial(2 * i + 1)
     return s
 
+@given(x=st.floats(min_value=-50.0, max_value=50.0))
 def test_sine(x):
-    assert False
+    y = math.pi - x
+    assert sine(x) == pytest.approx(sine(y), 0.001)
 
 if __name__ == '__main__':
     test_sine()
